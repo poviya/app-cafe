@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
 
         if(environment.production == true)
         {
-          this.subscribeToPush();
+          //this.subscribeToPush();
         }
     }
     
