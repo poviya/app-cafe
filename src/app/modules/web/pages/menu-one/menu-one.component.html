@@ -1,0 +1,246 @@
+<div class="header" [ngClass]="{'fixed': isFixed}">
+  <nav class="menu w-full bg-background-light dark:bg-background-dark" [ngClass]="{'show-menu': showMenu}">
+
+    <div class="max-w-6xl mx-auto w-full flex flex-wrap items-center justify-between space-x-5 px-4 py-3 font-medium">
+      <a routerLink="/bo" class="flex justify-center -mt-2 items-center">
+        <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="./assets/logo/icon.png" />
+      </a>
+      <div class="sm:mt-0 sm:flex md:order-2">
+        <!-- Login Button -->
+        <button *ngIf="!user" (click)="onLogin()" type="button"
+          class="rounde mr-3 hidden border border-primary-500 py-1.5 px-6 text-center text-sm font-medium text-primary-500 focus:outline-none focus:ring-4 focus:ring-primary-300 md:inline-block rounded-lg">
+          Login
+        </button>
+
+        <button *ngIf="!user" (click)="onRegister()" type="button"
+          class="rounde mr-3 hidden bg-primary-500 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-4 focus:ring-primary-300 md:mr-0 md:inline-block rounded-lg">
+          Registrate
+        </button>
+
+        <button *ngIf="user" (click)="onLogout()" type="button"
+          class="rounde mr-3 hidden bg-primary-500 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-4 focus:ring-primary-300 md:mr-0 md:inline-block rounded-lg">
+          Salir
+        </button>
+
+        <!-- Register Button -->
+        <button data-collapse-toggle="navbar-sticky" type="button" (click)="toggleMenu()"
+          class="inline-flex items-center rounded-lg p-2 text-sm text-zinc-700 hover:text-zinc-800 dark:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-200 md:hidden"
+          aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto" id="navbar-sticky">
+        <ul class="flex space-x-5 text-sm">
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/"
+              class="block rounded py-1 pl-3 pr-4 hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500"
+              aria-current="page">Inicio</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/products"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Productos</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/courses"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Cursos
+              y Talleres</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/blogs"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Blogs</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/about"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Quienes
+              somos</a>
+          </li>
+          <li *ngIf="user">
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/panel"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Panel</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<header class="">
+  <!-- navbar and menu -->
+  <nav class=" fixed-div bg-background-light dark:bg-background-dark">
+    <div class="container flex flex-shrink-0 items-center justify-between space-x-5 ">
+      <a routerLink="/bo" class="flex justify-center -mt-2 items-center">
+        <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="./assets/logo/icon.png" />
+      </a>
+      <div class="sm:mt-0 sm:flex md:order-2">
+        <!-- Login Button -->
+        <button *ngIf="!user" (click)="onLogin()" type="button"
+          class="rounde mr-3 hidden border border-primary-500 py-1.5 px-6 text-center text-sm font-medium text-primary-500 focus:outline-none focus:ring-4 focus:ring-primary-300 md:inline-block rounded-lg">
+          Login
+        </button>
+
+        <button *ngIf="!user" (click)="onRegister()" type="button"
+          class="rounde mr-3 hidden bg-primary-500 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-4 focus:ring-primary-300 md:mr-0 md:inline-block rounded-lg">
+          Register
+        </button>
+
+        <button *ngIf="user" (click)="onLogout()" type="button"
+          class="rounde mr-3 hidden bg-primary-500 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-4 focus:ring-primary-300 md:mr-0 md:inline-block rounded-lg">
+          Salir
+        </button>
+
+        <!-- Register Button -->
+        <button data-collapse-toggle="navbar-sticky" type="button" (click)="toggleMenu()"
+          class="inline-flex items-center rounded-lg p-2 text-sm text-zinc-700 hover:text-zinc-800 dark:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-200 md:hidden"
+          aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto" id="navbar-sticky">
+        <ul
+          class="flex flex-col rounded-lg  p-1 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium">
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/"
+              class="block rounded py-1 pl-3 pr-4 hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500"
+              aria-current="page">Inicio</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/products"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Productos</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/courses"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Cursos
+              y Talleres</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/blogs"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Blogs</a>
+          </li>
+          <li>
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/about"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Quieres
+              somos</a>
+          </li>
+          <li *ngIf="user">
+            <a routerLinkActive="bg-primary-500 text-white md:bg-transparent md:text-primary-500"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/panel"
+              class="block rounded py-1 pl-3 pr-4  hover:bg-zinc-100 md:p-0 md:hover:bg-transparent md:hover:text-primary-500">Panel</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="menu-mobile bg-background-light dark:bg-background-dark rounded-tr-3xl shadow-2xl"
+  [ngClass]="{'menu--open': isMenuOpen}" (click)="closeMenu()">
+  <div class="p-6 menu-content">
+    <div class="space-y-4">
+      <h2 class="mb-8 text-xl font-bold">
+        Central Local de Cooperativas Agropecuarias de Caranavi
+      </h2>
+    </div>
+    <div class="mt-16 grid space-y-4">
+
+      <a (click)="closeMenu()" routerLinkActive="bg-primary-500 text-white md:bg-transparent "
+        [routerLinkActiveOptions]="{exact: true}" routerLink="/" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+hover:border-primary-500 focus:bg-primary-500 active:bg-primary-500 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Inicio
+        </span>
+      </a>
+
+      <a (click)="closeMenu()" routerLinkActive="bg-primary-500 text-white md:bg-transparent "
+        [routerLinkActiveOptions]="{exact: true}" routerLink="/products" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+hover:border-primary-500 focus:bg-primary-500 active:bg-primary-500 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Productos
+        </span>
+      </a>
+
+      <a (click)="closeMenu()" routerLinkActive="bg-primary-500 text-white md:bg-transparent"
+        [routerLinkActiveOptions]="{exact: true}" routerLink="/courses" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+hover:border-primary-500 focus:bg-primary-500 active:bg-primary-100 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Cursos Y Talleres
+        </span>
+      </a>
+
+      <a (click)="closeMenu()" routerLinkActive="bg-primary-500 text-white md:bg-transparent"
+        [routerLinkActiveOptions]="{exact: true}" routerLink="/blogs" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+hover:border-primary-500 focus:bg-primary-500 active:bg-primary-100 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Blogs
+        </span>
+      </a>
+
+      <a routerLinkActive="bg-primary-500 text-white md:bg-transparent" [routerLinkActiveOptions]="{exact: true}"
+        routerLink="/about" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+hover:border-primary-500 focus:bg-primary-500 active:bg-primary-100 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Nosotros
+        </span>
+      </a>
+
+      <a *ngIf="user" (click)="closeMenu()"
+        routerLinkActive="bg-primary-500 text-white md:bg-transparent flex justify-center items-center"
+        [routerLinkActiveOptions]="{exact: true}" routerLink="/panel" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+hover:border-primary-500 focus:bg-primary-500 active:bg-primary-100 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Panel
+        </span>
+      </a>
+
+      <button *ngIf="!user" (click)="onLogin()" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+      hover:border-primary-500 focus:bg-primary-500 active:bg-primary-100 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Login
+        </span>
+      </button>
+
+
+      <button *ngIf="!user" (click)="onRegister()" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+            hover:border-primary-500 focus:bg-primary-500 active:bg-primary-100 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Registrate
+        </span>
+      </button>
+
+      <button *ngIf="user" (click)="onLogout()" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+            hover:border-primary-500 focus:bg-primary-500 active:bg-primary-100 flex justify-center items-center">
+        <span class="block w-max font-semibold tracking-wide text-sm transition duration-300">
+          Salir
+        </span>
+      </button>
+
+    </div>
+
+    <div class="mt-20 space-y-4 text-center sm:-mb-8">
+      <p class="text-xs">Al continuar usded acepta nuestros <a href="" class="underline">terminos y policas de
+          privacidad</a> de Celccar </p>
+    </div>
+  </div>
+</div>

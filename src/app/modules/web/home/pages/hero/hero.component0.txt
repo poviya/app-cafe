@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+
+interface Slide {
+  image: string;
+}
+
+@Component({
+  selector: 'app-hero',
+  templateUrl: './hero.component.html',
+  styleUrls: ['./hero.component.scss']
+})
+export class HeroComponent0 implements OnInit {
+
+  currentIndex = 0;
+  slideWidth = 1500; // Ajusta el ancho de la imagen según tu necesidad
+  slides = [
+    { image: './assets/images/hero-1.jpg' },
+    { image: './assets/images/hero-2.jpg' },
+    { image: './assets/images/hero-3.jpg' },
+    { image: './assets/images/hero-4.jpg' }
+  ];
+
+  ngOnInit(): void {
+    setInterval(() => {
+      this.next();
+    }, 5000); // Cambia de slide cada 5 segundos (5000ms)
+  }
+
+  next() {
+    if (this.currentIndex === this.slides.length - 1) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex++;
+    }
+  }
+
+  prev() {
+    if (this.currentIndex === 0) {
+      this.currentIndex = this.slides.length - 1;
+    } else {
+      this.currentIndex--;
+    }
+  }
+
+  jumpToSlide(index: number) {
+    this.currentIndex = index;
+  }
+
+}

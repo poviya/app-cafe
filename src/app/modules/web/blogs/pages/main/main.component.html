@@ -1,0 +1,20 @@
+<main *ngIf="isBrowser" class="mx-auto max-w-6xl">
+  <div class="flex flex-col md:flex-row text-primary-500 mt-28 md:mt-28 mb-10 md:mb-16 px-6 space-x-4 space-y-4">
+    <div class="text-5xl font-bold ">
+      Enterate
+    </div>
+    <div class="border-r-2 border-primary-500">
+
+    </div>
+    <div class="font-normal">
+      Infórmese de lo último que sucede en la Cooperativa de Cafetaleros del Norte del Valle, Noticias, Artículos,
+      Información de interés.
+    </div>
+  </div>
+  <div class=" sticky rounded-tl-5xl bg-background-light dark:bg-background-dark mt-10 pb-16">
+    <!-- product list-->
+    <app-list [posts]="posts" [loading]="loading" [totalPages]="totalPages"
+      (infiniteEvent)="findAllPostInfinite($event)"></app-list>
+  </div>
+
+</main>

@@ -1,0 +1,25 @@
+<div class="space-y-4">
+  <div>
+    <a routerLink="/panel/create-course"
+    class="flex w-full sm:w-fit items-center justify-center rounded-full sm:rounded-full space-x-2 text-white border border-primary-600 bg-primary-600 py-2 px-3"
+    >
+    <i class="fa-solid fa-plus"></i>
+     <span>Nuevo curso o taller</span>
+    </a>
+  </div>
+    
+    <form *ngIf="myForm" (ngSubmit)="onSubmit()" [formGroup]="myForm" class="space-y-4 my-6">
+        <div class="flex flex-col sm:flex-row space-y-2 space-x-0 sm:space-x-2 sm:space-y-0 w-full">
+          <div class="sm:w-5/6 ">
+            <input type="search" placeholder="Buscar aqui..." formControlName="search" 
+                class="w-full rounded-full py-2 px-2 focus:outline-none focus:ring dark:bg-zinc-700 border dark:border-zinc-700 focus:ring-zinc-200 active:ring-zinc-200  focus:dark:ring-zinc-700 active:ring  active:dark:ring-zinc-700 ">
+          </div>
+          <div class="sm:w-1/6 flex justify-end">
+            <button type="submit" class="flex w-full items- justify-center rounded-full sm:rounded-full space-x-1 uppercase text-white border border-primary-600 bg-primary-600 p-2">
+                <span class="material-icons-outlined text-base">search</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+</div>

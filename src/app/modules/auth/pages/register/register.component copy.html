@@ -1,0 +1,177 @@
+
+
+<h1 routerLink="/" class="text-3xl font-light mb-8 cursor-pointer">
+    ¡Entra en Onlypu!
+</h1>
+
+<form [formGroup]="myform" id="form" novalidate  autocomplete="off" (ngSubmit)="register()">
+    
+    <div class="mb-4 flex flex-col">
+        <div class="flex justify-between">
+          <label for="email" class="mb-2 font-semibold">* Correo electrónico</label>
+          <span class="text-xs font-light hidden">Se necesitan 5 caracteres</span>
+        </div>
+        <div class="relative">
+            <input formControlName="email" id="text" 
+            [ngClass]="{
+                'bg-green-50 border-green-400': myform.controls['email'].valid && (myform.controls['email'].dirty || myform.controls['email'].touched),
+                'bg-red-50 border-red-400': myform.controls['email'].invalid && (myform.controls['email'].dirty || myform.controls['email'].touched)
+              }"
+            class="w-full rounded-lg border border-slate-300 px-2 py-2 pl-1 hover:border-slate-300 focus:outline-none focus:ring focus:ring-secondary-500/40 active:ring active:ring-secondary-500/40"/>
+            <div *ngIf="useExists" class="flex absolute inset-y-0 right-0 items-center pr-2 pointer-events-none">
+              <i class="fas fa-exclamation-circle text-red-500"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-4 flex flex-col">
+        <div class="flex justify-between">
+          <label for="password" class="mb-2 font-semibold">* Contraseña</label>
+          <span class="text-xs font-light text-secondary-100">Se necesitan 6 caracteres</span>
+        </div>
+        <div class="relative">
+            <input formControlName="password" id="text" 
+            [ngClass]="{
+                'bg-green-50 border-green-400': myform.controls['password'].valid && (myform.controls['password'].dirty || myform.controls['password'].touched),
+                'bg-red-50 border-red-400': myform.controls['password'].invalid && (myform.controls['password'].dirty || myform.controls['password'].touched)
+              }"
+            class="w-full rounded-lg border border-slate-300 px-2 py-2 pl-1 hover:border-slate-300 focus:outline-none focus:ring focus:ring-secondary-500/40 active:ring active:ring-secondary-500/40"/>
+           
+        </div>
+    </div>
+
+    <div class="mb-4 flex flex-col">
+      <label for="Country" class="mb-2 font-semibold ">* Tu pais</label>
+      <div class="relative">
+          <select 
+          formControlName="Country" 
+          (change)="onCountry($event)" 
+          [ngClass]="{
+              'bg-green-50 border-green-400': myform.controls['Country'].valid && (myform.controls['Country'].dirty || myform.controls['Country'].touched),
+              'bg-red-50 border-red-400bg-red-50 border-red-400': myform.controls['Country'].invalid && (myform.controls['Country'].dirty || myform.controls['Country'].touched)
+            }"
+          class="w-full rounded-lg border border-slate-300 px-2 py-2 pl-1 hover:border-slate-300 focus:outline-none focus:ring focus:ring-secondary-500/40 active:ring active:ring-secondary-500/40">
+              <option value="">Seleccionar pais</option>
+              <option *ngFor="let item of countries" value="{{item._id}}">{{item.name}}</option>
+          </select>
+
+      </div>
+    </div>
+
+    <div class="mb-4 flex flex-col">
+      <label for="StateCity" class="mb-2 font-semibold ">*  Tu ciudad</label>
+      <div class="relative">
+
+          <select 
+          formControlName="StateCity" 
+          [ngClass]="{
+              'bg-green-50 border-green-400': myform.controls['StateCity'].valid && (myform.controls['StateCity'].dirty || myform.controls['StateCity'].touched),
+              'bg-red-50 border-red-400': myform.controls['StateCity'].invalid && (myform.controls['StateCity'].dirty || myform.controls['StateCity'].touched)
+            }"
+          class="w-full rounded-lg border border-slate-300 px-2 py-2 pl-1 hover:border-slate-300 focus:outline-none focus:ring focus:ring-secondary-500/40 active:ring active:ring-secondary-500/40">
+              <option value="">Seleccionar ciudad</option>
+              <option *ngFor="let item of stateCitiesAll" value="{{item._id}}">{{item.name}}</option>
+          </select>
+      </div>
+  </div>
+
+  <div class="-mb-4 flex flex-col">
+    <label for="Country" class="mb-2 font-semibold ">*  Genero</label>
+    <ul class="grid grid-cols-2 mt-4">
+      <li class="relative">
+        <input formControlName="gender" class="sr-only peer" type="radio" value="yes" name="gender" id="answer_yes">
+        <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_yes">
+          Hombre
+        </label>
+    
+        <div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">
+          🙋🏻‍♂
+        </div>
+    
+      <li class="relative">
+        <input formControlName="gender" class="sr-only peer" type="radio" value="no" name="gender" id="answer_no">
+        <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_no">
+          Mujer
+        </label>
+    
+        <div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">
+          🙋🏼‍♀
+        </div>
+      </li>
+
+    </ul>
+  
+  </div>
+
+    <div class="mb-4 grid grid-cols-2 gap-4">
+      <div class="flex flex-col">
+        <label for="phonePrefix" class="mb-2 font-semibold">{{myform.value.phonePrefix}}</label>
+        <div class="relative">
+
+            <select formControlName="phonePrefix"
+            [ngClass]="{
+                'bg-green-50 border-green-400': myform.controls['phonePrefix'].valid && (myform.controls['phonePrefix'].dirty || myform.controls['phonePrefix'].touched),
+                'bg-red-50 border-red-400': myform.controls['phonePrefix'].invalid && (myform.controls['phonePrefix'].dirty || myform.controls['phonePrefix'].touched)
+              }"
+            class="w-full rounded-lg border border-slate-300 px-2 py-2 pl-1 hover:border-slate-300 focus:outline-none focus:ring focus:ring-secondary-500/40 active:ring active:ring-secondary-500/40">
+                <option *ngFor="let item of countries" value="{{item.phonePrefix}}">{{item.name}}</option>
+            </select>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <label for="phone" class="mb-2 font-semibold">Teléfono</label>
+        <div class="relative">
+          <input formControlName="phone" id="text" 
+          [ngClass]="{
+              'bg-green-50 border-green-400': myform.controls['phone'].valid && (myform.controls['phone'].dirty || myform.controls['phone'].touched),
+              'bg-red-50 border-red-400': myform.controls['phone'].invalid && (myform.controls['phone'].dirty || myform.controls['phone'].touched)
+            }"
+            class="w-full rounded-lg border border-slate-300 px-2 py-2 pl-6 hover:border-slate-300 focus:outline-none focus:ring focus:ring-secondary-500/40 active:ring active:ring-secondary-500/40"/>
+            
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="mb-4 flex space-x-5">
+        <label 
+            for="toogleC"
+            class="flex items-center cursor-pointer"
+          >
+            <div class="relative">
+
+              <input id="toogleC" formControlName="terms" type="checkbox" class="sr-only bg-pink-800" />
+ 
+              <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+    
+              <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+            </div>
+            
+           
+          </label>
+          <div class="ml-3 text-xs">
+            He leído los 
+            <a href="" class="text-primary-600 font-semibold">Términos y Condiciones</a>
+            de uso y la
+            <a href="" class="text-primary-600 font-semibold">Política de Privacidad</a>
+            y doy mi consentimiento para el tratamiento de mis datos personales, para los fines relacionados con la prestación del servicio web. 
+          </div>
+      </div>
+
+    <button
+        id="button"
+        type="submit"
+       
+        [ngClass]="myform.status == 'VALID' ? '' : 'opacity-50'" 
+        [disabled]="myform.status == 'VALID' ? false: true"
+        class="w-full px-6 py-3 mt-6 text-lg text-white transition-all duration-150 ease-linear rounded-full shadow outline-none bg-primary-600 hover:bg-primary-600 hover:shadow-lg focus:outline-none"
+    >
+    Regístrate
+    </button>
+
+    <div class="mt-5 flex justify-center">
+        ¿Ya tienes una cuenta? 
+        <a routerLink="/auth/login" class="text-primary-600 font-semibold ml-1 cursor-pointer"> Acceder</a>
+    </div>
+</form>
+

@@ -1,0 +1,25 @@
+<!-- Tab Menu -->
+<div *ngIf="postCategories!.length > 0"
+    class="flex flex-wrap items-center  overflow-x-auto overflow-y-hidden py-10 justify-center">
+    <button (click)="onProducts()" class="flex items-center flex-shrink-0 px-5 py-3 space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span class="font-serif">Todos</span>
+    </button>
+    <button (click)="onCategory(item)" *ngFor="let item of postCategories" rel="noopener noreferrer"
+        class="flex items-center flex-shrink-0 px-5 py-3 space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span class="font-serif {{category == item.slug ? 'text-primary-500': ''}}  ">{{item.name}}</span>
+    </button>
+</div>
+
+<!--
+    [routerLink]="['/products']" [queryParams]="{category: item.slug}"
+-->

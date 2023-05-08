@@ -1,0 +1,68 @@
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+
+interface Slide {
+  image: string;
+}
+
+@Component({
+  selector: 'app-carousel-media',
+  templateUrl: './carousel-media.component.html',
+  styleUrls: ['./carousel-media.component.scss']
+})
+export class CarouselMediaComponent implements OnInit, AfterViewInit  {
+
+  currentIndex = 0;
+  slideWidth: number;
+  transitionDuration = 0.5;
+  autoSlideInterval = 3000; // change slide every 3 seconds
+  autoSlideTimer: any;
+
+  document: Document;
+  
+  slides = [
+   
+    { image: './assets/images/hero-2.jpg' },
+    //{ image: './assets/images/hero-1.jpg' },
+    { image: './assets/images/hero-3.jpg' },
+    //{ image: './assets/images/hero-4.jpg' }
+  ];
+
+  ngOnInit() {
+   
+    // console.log(this.slideWidth);
+    // setInterval(() => {
+    //   this.next();
+    // }, this.autoSlideInterval); // Cambia de slide cada 5 segundos (5000ms)
+  }
+  
+  ngAfterViewInit() {
+    this.slideWidth = this.document.querySelector('.carousel-content')!.clientWidth; //window.innerWidth;
+  }
+
+  jumpToSlide(index: number) {
+    this.currentIndex = index;
+    clearInterval(this.autoSlideTimer);
+    this.autoSlide();
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex === 0) ? this.slides.length - 1 : this.currentIndex - 1;
+    clearInterval(this.autoSlideTimer);
+    this.autoSlide();
+
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex === this.slides.length - 1) ? 0 : this.currentIndex + 1;
+    clearInterval(this.autoSlideTimer);
+    this.autoSlide();
+  }
+
+  autoSlide() {
+    this.autoSlideTimer = setInterval(() => {
+      this.currentIndex = (this.currentIndex === this.slides.length - 1) ? 0 : this.currentIndex + 1;
+    }, this.autoSlideInterval);
+  }
+
+}
+

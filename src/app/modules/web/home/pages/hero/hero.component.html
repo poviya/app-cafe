@@ -1,0 +1,56 @@
+<div class="carousel-container">
+  <div class="carousel-track"
+    [ngStyle]="{ transform: 'translateX(' + (-currentIndex * slideWidth) + 'px)', transition: 'transform ' + transitionDuration + 's ease-in-out' }">
+    <div *ngFor="let slide of slides" class="carousel-slide">
+      <!-- <img [src]="slide.image" alt="" class="w-full">
+
+      <div class="ml-0 slide-content absolute text-white ">
+        <h2 class="text-2xl  md:text-3xl font-light">Disfruta de nuestro café</h2>
+        <p class="mt-4 capitalize font-bold tracking-wider leading-10 text-3xl  md:text-4xl lg:w-128">
+          Una simple taza de café tiene el poder de hacer de tu mundo un lugar mejor.
+        </p>
+        <p class="mt-4 font-light text-2xl md:text-3xl">
+          Café de los yungas | Bolivia
+        </p>
+        <a routerLink="/"
+          class="uppercase inline-block mt-8 text-sm bg-transparent py-2 px-4 rounded-br-2xl font-semibold border border-white">
+          Más información
+        </a>
+      </div> -->
+
+      <div class="py-0 space-y-6 sm:space-y-0 sm:gap-4 img">
+
+        <div class=" h-full text-white  bg-gradient-to-tr from-primary-800 to-primary-500 flex items-center"
+          style="background-image: url('{{slide.image}}');">
+
+
+          <div class="ml-0 slide-content">
+            <h2 class="text-white text-2xl  md:text-3xl font-light">Disfruta de nuestro café</h2>
+            <p class="mt-4 capitalize font-bold tracking-wider leading-10 text-3xl  md:text-4xl lg:w-128">
+              Una simple taza de café tiene el poder de hacer de tu mundo un lugar mejor.
+            </p>
+            <p class="mt-4 font-light text-2xl md:text-3xl">
+              Café de los yungas | Bolivia
+            </p>
+            <a routerLink="/"
+              class="uppercase inline-block mt-8 text-sm bg-transparent py-2 px-4 rounded-br-2xl font-semibold border border-white">
+              Más información
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-dots z-30">
+    <span *ngFor="let slide of slides; let i = index" [ngClass]="{ 'active': i === currentIndex }"
+      (click)="jumpToSlide(i)">
+    </span>
+  </div>
+  <button class="carousel-button prev" (click)="prev()">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="carousel-button next" (click)="next()">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>

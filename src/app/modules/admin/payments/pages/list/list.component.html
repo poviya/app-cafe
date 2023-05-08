@@ -1,0 +1,61 @@
+<div class="antialiased bg-zinc-50  dark:bg-zinc-800  shadow-sm">
+    <div class="overflow-x-auto">
+        <table *ngIf="paymentOrders" class="table-auto w-full">
+            <thead class="text-xs font-semibold uppercase text-zinc-600 bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-100">
+                <tr>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">Nombre</div>
+                    </th>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">Codigo</div>
+                    </th>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">Monto</div>
+                    </th>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">Fecha</div>
+                    </th>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">Tipo</div>
+                    </th>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-center">Estado</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-zinc-100 dark:divide-zinc-700">
+                <tr *ngFor="let item of this.paymentOrders">
+                    <td class="p-2 whitespace-nowrap">
+                        <div *ngIf="item.Customer" class="flex items-center">
+                            <div>
+                                <div class="font-medium">{{item.Customer!.name}} {{item.Customer!.lastname}}</div>
+                                <div class="text-xs text-zinc-600 dark:text-zinc-500">{{item.Customer!.email}}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-2 whitespace-nowrap">
+                        <div class="text-left font-medium">{{item.codeCollection}}</div>
+                    </td>
+                    <td class="p-2 whitespace-nowrap">
+                        <div class="text-left font-medium text-green-600">{{item.Money!.iso}} {{item.amount}}</div>
+                    </td>
+                    <td class="p-2 whitespace-nowrap">
+                        <div class="text-left text-xs text-zinc-600 dark:text-zinc-200">{{item.createdAt | dateAgo}}</div>
+                    </td>
+                    <td class="p-2 whitespace-nowrap">
+                        <div class="text-left font-medium text-green-600">
+                            {{item.paymentType == 'SALE_PRODUCT' ? "Producto": item.paymentType == 'SALE_COURSE' ? "Curso" : "Ninguno"}}
+                        </div>
+                    </td>
+                    <td class="p-2 whitespace-nowrap">
+                        <div class=" text-center">
+                            <span *ngIf="item.status == 'PAYMENT'" class=" material-icons-outlined notranslate text-green-600">thumb_up</span>
+                            <span *ngIf="item.status != 'PAYMENT'" class=" material-icons-outlined notranslate text-red-600">thumb_down</span>
+                        </div>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>

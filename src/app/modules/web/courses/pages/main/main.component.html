@@ -1,0 +1,17 @@
+<main *ngIf="isBrowser">
+    <div class="hero sticky bg-black h-96 md:h-112 lg:h-128" style="background-image: url('./assets/images/courses-1.jpg'); background-repeat: no-repeat;  background-size: cover;">
+      <div class="hero-content">
+        <!-- Title -->
+        <div *ngIf="!loading" class="pt-36 md:pt-44 lg:pt-56 pb-20">
+          <h1  class="text-center text-4xl font-normal text-white">Cursos y Talleres</h1>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class=" sticky rounded-tl-5xl bg-background-light dark:bg-background-dark -mt-20 pb-16"> 
+      <!-- product list-->
+      <app-list [courses]="courses" [loading] ="loading" [totalPages]="totalPages" (infiniteEvent)="findAllPostInfinite($event)"></app-list>
+    </div>
+    
+  </main>

@@ -1,0 +1,20 @@
+<main *ngIf="isBrowser">
+  <div class="hero sticky bg-black h-96" style="background-image: url('./assets/images/hero-4.jpg'); background-repeat: no-repeat;  background-size: cover;">
+    <div class="hero-content">
+      <!-- Title -->
+      <div *ngIf="!loading" class="pt-40 md:pt-36 pb-20">
+        <h1 *ngIf="!postCategory" class="text-center text-4xl font-normal text-white">Todos los productos</h1>
+        <h1 *ngIf="postCategory" class="text-center text-4xl font-normal text-white">{{postCategory.name}}</h1>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class=" sticky rounded-tl-5xl bg-background-light dark:bg-background-dark -mt-20 pb-16"> 
+    <!-- categories --->
+    <app-categories [postCategories]="postCategories" [category]="category"></app-categories>
+    <!-- product list-->
+    <app-list [posts]="posts" [loading] ="loading" [totalPages]="totalPages" (infiniteEvent)="findAllPostInfinite($event)"></app-list>
+  </div>
+  
+</main>

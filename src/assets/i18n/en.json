@@ -1,0 +1,21 @@
+{
+    "Girls": "Girls",
+    "Guys": "Guys",
+    "home": {
+        "country": {
+            "title": "Welcome!",
+            "subtitle": "Look for the hottest date in your country",
+            "text": "To access detailed Terms and Conditions for each country, please select the country, click on Terms and Conditions link, and review the page"
+        }
+    },
+    "HELLO": "hello world",
+    "GREETING": "Hello  <strong>{{name}}</strong>, nice to meet you.",
+    "ADMIN": {
+      "CREATED_AD": {
+          "DETAILS": {
+              "TITLE": "Publish for free in just a few steps!"
+          }
+      }
+  },
+  "In": "In"
+}

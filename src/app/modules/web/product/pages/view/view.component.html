@@ -1,0 +1,123 @@
+<!-- component --> 
+<div *ngIf="post" class=" body-font overflow-hidden">
+    <div class="container md:px-10 mx-auto">
+      <div class="mx-auto flex flex-wrap">
+
+        <div class="w-full lg:w-2/3">
+            <app-carousel-media [slides]="post.PostMedia"></app-carousel-media>
+        </div>
+        <!-- <img alt="ecommerce" class="lg:w-2/3 w-full object-center rounded-bl-3xl  rounded-tr-3xl  hover:transform hover:scale-105 duration-300 " src="{{post.PostMedia![0].url}}"> -->
+
+        <div class="lg:w-1/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-20 px-4">
+          <h2 class="text-sm title-font text-zinc-500 dark:text-zinc-200 tracking-widest uppercase">{{post.PostCategory!.name}}</h2>
+          <h1 class="text-zinc-900 dark:text-zinc-50 text-3xl title-font font-medium mb-1">{{post.title}}</h1>
+          <div class="flex mb-4">
+            <span class="flex items-center">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <span class="text-zinc-600 ml-3 hidden">4 Reviews</span>
+            </span>
+            <span class="flex ml-3 pl-3 py-2 border-l border-zinc-200 dark:border-zinc-800 space-x-3">
+              <a 
+              href="https://www.facebook.com/sharer/sharer.php?u=https://celccar.com/product/{{post.slug}}&src=sdkpreparse" target="_blank"
+              class="text-zinc-500">
+                <i class="fab fa-facebook-square"></i>
+              </a>
+              <a  
+              href="https://twitter.com/intent/tweet?text={{post.title}} https://celccar.com/product{{post.slug}}" target="_blank"
+              class=" text-zinc-500">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a 
+              href="https://wa.me/?text=https://celccar.com/product/{{post.slug}}" target="_blank"
+              class=" text-zinc-500">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a 
+              href="https://t.me/share/url?url=https://celccar.com/product/{{post.slug}}&text={{post.title}}" target="_blank"
+              class=" text-zinc-500">
+                  <i class="fab fa-telegram"></i>
+              </a>
+            </span>
+          </div>
+          <p class="leading-relaxed">
+            {{post.description}}
+          </p>
+          <div class="flex justify-between mt-6 items-center pb-5 border-b border-zinc-200 dark:border-zinc-800 mb-5">
+            <div>
+                <span class="title-font font-medium text-2xl text-zinc-900 dark:text-zinc-400">{{post.Money!.symbol}} {{post.price}}</span>
+            </div>
+            <div class=" text-base pl-3 pr-10">
+                {{post.weightAmount}} <span class="lowercase">{{post.weight}} </span>
+            </div>
+            <!-- <div class="flex">
+              <span class="mr-3">Color</span>
+              <button class="border-2 border-zinc-300 rounded-full w-6 h-6 focus:outline-none"></button>
+              <button class="border-2 border-zinc-300 ml-1 bg-zinc-700 rounded-full w-6 h-6 focus:outline-none"></button>
+              <button class="border-2 border-zinc-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            </div>
+            <div class="flex ml-6 items-center">
+              <span class="mr-3">Size</span>
+              <div class="relative">
+                <select class="rounded border appearance-none border-zinc-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
+                  <option>SM</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </select>
+                <span class="absolute right-0 top-0 h-full w-10 text-center text-zinc-600 pointer-events-none flex items-center justify-center">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
+              </div>
+            </div> -->
+          </div>
+          <div class="flex">
+           
+            <form [formGroup]="myform" novalidate class="space-y-2 w-full">
+              <div>
+                <label for="quantity" class=" font-semibold">Cantidad</label>
+              </div>
+              <div class="flex justify-between">
+                  <div class="flex flex-col w-20">
+                      <input formControlName="quantity" id="text" 
+                      [ngClass]="{
+                          'dark:bg-zinc-700 border-green-500 dark:border-green-600  focus:ring-green-100 active:ring-green-100': 
+                          myform.controls['quantity'].valid && (myform.controls['quantity'].dirty || myform.controls['quantity'].touched),
+                          ' dark:bg-zinc-700 border-red-500 dark:border-red-600 focus:ring-red-100 active:ring-red-100': 
+                          myform.controls['quantity'].invalid && (myform.controls['quantity'].dirty || myform.controls['quantity'].touched),
+                          'w-full rounded-lg py-2 px-2 focus:outline-none focus:ring dark:bg-zinc-700 border dark:border-zinc-700 focus:ring-zinc-200 active:ring-zinc-200  focus:dark:ring-zinc-700 active:ring  active:dark:ring-zinc-700 ': true
+                      }"
+                      />
+                  </div>
+                  <div class="flex justify-center w-fit">
+                    <button
+                      (click)="onPay(post)"
+                        [ngClass]="myform.status == 'VALID' ? '' : 'opacity-50'" 
+                        class=" flex ml-auto text-white bg-primary-500 border-0 font-semibold py-2 px-6 focus:outline-none hover:bg-primary-600 rounded-lg" 
+                        [disabled]="myform.status == 'VALID' ? false: true">
+                        Pagar ahora
+                    </button>
+                  </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

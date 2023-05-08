@@ -1,0 +1,90 @@
+<!-- Product List -->
+<div class="">
+  <div *ngIf="this.posts.length > 0; else loadingTemplate"
+    class="grid  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+    <article *ngFor="let item of posts"
+      class="rounded-xl bg-white dark:bg-zinc-800 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <div class="relative flex items-end overflow-hidden rounded-xl w-full">
+        <img src="{{prinImages(item.PostMedia)}}" alt="{{item.title}}" class="h-64 w-full object-cover" />
+        <div class="absolute bottom-3 left-3 inline-flex flex-col items-center rounded-lg bg-zinc-50 dark:bg-zinc-800 p-2 shadow-md ">
+          <div class="font-semibold">{{item.eventDate | date}}</div>
+        </div>
+      </div>
+
+      <div class="mt-1 p-2 space-y-3">
+        <a routerLink="/course/{{item.slug}}">
+          <h2 class="text-zinc-700 dark:text-zinc-300 font-semibold text-lg">{{item.title}}</h2>
+          <p class="mt-1 text-sm truncate-two">
+            {{item.description}}
+          </p>
+        </a>
+        <div class="hidden justify-between items-center space-x-2">
+          <a href="https://wa.me/+59167300323/?text={{textMessage(item)}}"
+            class="flex items-center space-x-1.5 rounded-lg bg-green-500 px-4 py-1.5 text-white duration-100 hover:bg-green-600">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                  </svg>
+                  
+                  <button class="text-sm">Add to cart</button> -->
+            <i class="fa-brands fa-whatsapp"></i>
+            <span  class="text-sm">
+              WhatsApp
+            </span>
+          </a>
+          <a routerLink="/course/{{item.slug}}"
+            class="flex items-center space-x-1.5 rounded-lg bg-primary-500 px-4 py-1.5 text-white duration-100 hover:bg-primary-600">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                  </svg>
+    
+                  <button class="text-sm">Add to cart</button> -->
+            <i class="fa-solid fa-credit-card"></i>
+            <span  class="text-sm">
+              Comprar
+            </span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <ng-template #loadingTemplate>
+    <div class="my-20">
+      <div *ngIf="loading; else noData"
+        class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+
+        <article *ngFor="let item of this.postLoading"
+          class="rounded-xl bg-white dark:bg-zinc-800 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+          <div class=" animate-pulse h-64 w-full bg-zinc-200 dark:bg-zinc-700 rounded ">
+
+          </div>
+          <div class="animate-pulse flex space-x-4">
+            <div class="flex-1 space-y-6 py-1">
+              <div class="flex flex-col space-y-1">
+                <div class="h-2 bg-zinc-200 dark:bg-zinc-700 rounded w-32">
+
+                </div>
+                <div class="h-2 bg-zinc-200 dark:bg-zinc-700 rounded w-24">
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class=" animate-pulse h-2 bg-zinc-200 dark:bg-zinc-700 rounded ">
+
+          </div>
+
+        </article>
+
+      </div>
+      <ng-template #noData>
+        <div class=" text-center font-light text-3xl">
+          No hay datos
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+
+</div>

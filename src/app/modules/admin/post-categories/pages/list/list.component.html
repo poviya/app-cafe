@@ -1,0 +1,30 @@
+<div class="antialiased bg-zinc-50  dark:bg-zinc-800  shadow-sm">
+    <div class="overflow-x-auto">
+        <table *ngIf="postCategory" class="table-auto w-full">
+            <thead class="text-xs font-semibold uppercase text-zinc-600 bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-100">
+                <tr>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">Descripción</div>
+                    </th>
+                    <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-center">Estado</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-zinc-100 dark:divide-zinc-700">
+                <tr *ngFor="let item of this.postCategory">
+                    <td class="p-2 whitespace-nowrap">
+                        <div class="text-left font-medium">{{item.name}}</div>
+                    </td>
+                    <td class="p-2 whitespace-nowrap">
+                        <div class=" text-center">
+                            <span *ngIf="item.active" class=" material-icons-outlined notranslate text-green-600">thumb_up</span>
+                            <span *ngIf="!item.active" class=" material-icons-outlined notranslate text-red-600">thumb_down</span>
+                        </div>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>

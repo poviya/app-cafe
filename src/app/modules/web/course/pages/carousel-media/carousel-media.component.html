@@ -1,0 +1,28 @@
+
+<div #main class="carousel-container h-72  md:h-160 w-full">
+  <div class="carousel-track" [ngStyle]="{ transform: 'translateX(' + (-currentIndex * slideWidth) + 'px)', transition: 'transform ' + transitionDuration + 's ease-in-out' }">
+    <div *ngFor="let slide of slides" class="carousel-slide">
+        <img [src]="slide.url" class="h-72  md:h-160 w-full rounded-tr-4xl rounded-bl-4xl" alt="">
+        <!-- <div class="py-0 space-y-6 sm:space-y-0 sm:gap-4 img w-full rounded-tr-4xl rounded-bl-4xl">
+            <div 
+            class="  h-72  md:h-160 w-full text-white flex items-center rounded-tr-4xl rounded-bl-4xl " 
+            style="background-image: url('{{slide.url}}');">
+            </div>
+        </div> -->
+    </div>
+  </div>
+  <div class="carousel-dots z-30">
+    <span *ngFor="let slide of slides; let i = index" 
+          [ngClass]="{ 'active': i === currentIndex }"
+          (click)="jumpToSlide(i)">
+    </span>
+  </div>
+  <button class="carousel-button prev" (click)="prev()">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="carousel-button next" (click)="next()">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+
+

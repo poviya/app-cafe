@@ -1,0 +1,37 @@
+<div>
+    <ul  class="space-y-3">
+        <li *ngFor="let item of this.ads">
+            <div class="grid  grid-cols-4  sm:grid-rows-3 sm:grid-flow-col gap-1 border">
+                <div *ngIf="item.PostMedias" class=" sm:row-span-3 bg-secondary-800">
+                    <img class="aspect-video h-full w-auto object-cover object-center" 
+                        src="{{prinImages(item.PostMedias) }}" />  
+                </div>
+                <div class=" col-span-3 sm:col-span-8 row-span-2 ">
+                    <p class="truncate font-semibold text-lg text-gray-800">{{item.title}}</p>
+                    <h1 class="text-2xl font-medium text-slate-600 pb-2">{{item.plan == 1? 'TOP': item.plan == 2 ? 'TOP PREMIUM' : '' }}</h1>
+                </div>
+                <div class="col-span-4 sm:col-span-8 ">
+                    <p class="flex justify-between  space-x-5 pr-1 ">
+                        <button
+                            (click)="onEdit(item._id!)" 
+                            class="py-1 px-2 bg-primary-700 text-white rounded uppercase font-light text-sm cursor-pointer">
+                            Editar
+                        </button>
+                        <button
+                            (click)="onPromote(item._id!)" 
+                            class="py-1 px-2 bg-primary-700 text-white rounded uppercase font-light text-sm cursor-pointer">
+                            Promocionar
+                        </button>
+                        <button
+                            (click)="onEdit(item._id!)" 
+                            class="py-1 px-2 bg-primary-700 text-white rounded uppercase font-light text-sm cursor-pointer">
+                            Eliminar
+                        </button>
+                    </p>
+                </div>
+            </div>
+
+            
+        </li> 
+    </ul>
+</div>

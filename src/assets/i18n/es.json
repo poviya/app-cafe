@@ -1,0 +1,14 @@
+{
+    "Girls": "Mujeres",
+    "Guys": "Hombres",
+    "home": {
+        "country": {
+            "title": "Bienvenido!",
+            "subtitle": "Busca la cita más calurosa en tu país",
+            "text": "Para acceder a los Términos y condiciones detallados de cada país, seleccione el país, haga clic en el enlace Términos y condiciones y revise la página."
+        },
+        "ads": {
+           
+        }
+    }
+}
