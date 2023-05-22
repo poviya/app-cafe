@@ -42,7 +42,7 @@ export class LoginComponent {
           if(!res.data.user.emailVerified)  {
             this.router.navigateByUrl('auth/verified-account');
           } else {
-            this.router.navigateByUrl('/panel/dasboard');
+            this.router.navigateByUrl('/panel');
             console.log('ok');
           }
         } else {

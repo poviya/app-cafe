@@ -25,6 +25,7 @@ import { SpinnerModule } from './library/spinner/spinner.module';
 import { FooterModule } from './modules/footer/footer.module';
 import { CommonModule } from '@angular/common';
 import { MenuOneComponent } from './modules/web/pages/menu-one/menu.-one.component';
+import { ToastModule } from './library/toast/toast.module';
 
 const config: SocketIoConfig = { url: 'http://192.168.43.253:4000', options: {} };
 
@@ -72,7 +73,8 @@ export function delay(delay: number) {
     SocketIoModule.forRoot(config),
     ErrorModule,
     SpinnerModule,
-    FooterModule
+    FooterModule,
+    ToastModule,
   ],
   providers: [{
     provide: APP_INITIALIZER,

@@ -1,17 +1,5 @@
 <div>
+    <app-toast *ngIf="loadingToast">{{ isLoading }}</app-toast>
     <app-spinner *ngIf="loading">{{ isLoading }}</app-spinner>
-
-    <!-- <button class="btn btn-block btn-success mb-3" (click)="isLoading = !isLoading">
-        infinite
-    </button>
-    
-    <button class="btn btn-block btn-warning mb-3" (click)="load()">
-        with Timeout 2 seconds jj
-    </button>
-    
-    <button class="btn btn-block btn-primary mb-3" (click)="start()">
-        start time consuming function - doesn't work
-    </button> -->
-
     <router-outlet></router-outlet>
 </div>

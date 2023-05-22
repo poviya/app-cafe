@@ -7,6 +7,7 @@ import {SwPush, SwUpdate} from '@angular/service-worker'
 import { environment } from 'src/environments/environment';
 import { SpinnerModule } from './library/spinner/spinner.module';
 import { SpinnerService } from './library/spinner/spinner.service';
+import { ToastService } from './library/toast/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
       @Inject(PLATFORM_ID) private platformId: Object, 
       private toolsService: ToolsService, 
       private translate: TranslateService,
+      private toastService: ToastService,
       private spinnerService: SpinnerService) {
 
       
@@ -124,6 +126,7 @@ export class AppComponent implements OnInit {
 	}
 
   get loading() {
+    
     return this.spinnerService.spinner;
   }
 	start() {
@@ -132,4 +135,8 @@ export class AppComponent implements OnInit {
     //this.isLoading = true;
 		//this.wait(2000).then( () => this.isLoading = false );
 	}
+
+  get loadingToast() {
+    return this.toastService.toast;
+  }
 }
